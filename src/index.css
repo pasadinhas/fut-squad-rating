@@ -11,3 +11,46 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: .6em;
+  border-radius: 50%;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1em;
+  background-color: aquamarine;
+  width: 6vw;
+  height: 6vw;
+}
+
+.RatingHigh {
+  background-color: springgreen;
+}
+
+.RatingLow {
+  background-color: salmon;
+}
+
+.RatingControls {
+  cursor: pointer;
+  border-top: 3px solid white;
+  border-left: 3px solid white;
+  width: 1vw;
+  height: 1vw;
+}
+
+.RatingIncrease {
+  transform: scaleY(.5) rotate(45deg);
+}
+
+.RatingDecrease {
+  transform: scaleY(.5) rotate(225deg);
+}
+
+.RatingValue {
+  color: black;
+  font-weight: bold;
+}
