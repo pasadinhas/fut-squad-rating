@@ -1,4 +1,5 @@
 import RMath from './RMath'
+import UI from './UI'
 
 function ratings_change(ratings, from, to) {
   const values = [...ratings];
@@ -18,7 +19,7 @@ function Rating(props) {
         <td>Diff</td>
       </tr>
       {uniqueRatings.map((r) => {
-        const newRating = RMath.computePreciseRating(
+        const newRating = RMath.rating(
           ratings_change(props.ratings, r, props.fn(r))
         );
         return (
@@ -26,8 +27,8 @@ function Rating(props) {
             <td>
               {r} &#8594; {props.fn(r)}
             </td>
-            <td>{RMath.round_precision(newRating, 2)}</td>
-            <td>{RMath.round_precision(newRating - props.baseRating, 2)}</td>
+            <td>{UI.round(newRating)}</td>
+            <td>{UI.round(newRating - props.baseRating)}</td>
           </tr>
         );
       })}

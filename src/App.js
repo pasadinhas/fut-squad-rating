@@ -3,12 +3,12 @@ import Rating from './Rating.jsx'
 import RatingChange from './RatingChange.jsx'
 import React, { useState } from 'react';
 import RMath from './RMath'
+import UI from './UI'
 
 const BASE_RATINGS = [77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77]
 
 
 function App() {
-
 
   const [ratings, baseSetRatings] = useState(BASE_RATINGS)
   const setRatings = ratings => baseSetRatings([...ratings])
@@ -18,33 +18,35 @@ function App() {
     setRatings(ratings)
   }
 
-  const baseAvg = RMath.computeBaseAvg(ratings)
-  const rating = RMath.computePreciseRating(ratings)
+  const squadAverage = RMath.avg(ratings)
+  const squadRating = RMath.rating(ratings)
 
   return (
     <div className="App">
       <header className="App-header">
-        {ratings.map((r, i) => <Rating rating={r} setRating={setRating(i)} avg={baseAvg} />)}
+        {ratings.map((r, i) => <Rating rating={r} setRating={setRating(i)} avg={squadAverage} />)}
       </header>
 
+      <h1>Rating: {UI.round(squadRating)}</h1>
+      <p>Average: {UI.round(RMath.avg(ratings))}</p>
+      <p>Correction: {UI.round(RMath.correction(ratings, RMath.avg(ratings)))}</p>
 
-      <button onClick={() => {
+      <button className="btn" onClick={() => {
         ratings.sort((a, b) => b - a)
         setRatings(ratings)
-      }}>Sort Ratings</button>
+      }}>Sort Ratings</button>      
       
-      
-      <h1>Rating: {RMath.round_precision(rating, 2)}</h1>
-      <p>Average: {RMath.round_precision(RMath.computeBaseAvg(ratings), 2)}</p>
-      <p>Correction: {RMath.round_precision(RMath.computeCorrection(ratings, RMath.computeBaseAvg(ratings)), 2)}</p>
+      <br/>
+      <br/>
+      <br/>
 
       <table width="100%">
         <tr>
           <td width="50%">
-            <RatingChange ratings={ratings} fn={r => r + 1} baseRating={rating} />
+            <RatingChange ratings={ratings} fn={r => r + 1} baseRating={squadRating} />
           </td>
           <td width="50%">
-            <RatingChange ratings={ratings} fn={r => r - 1} baseRating={rating} />
+            <RatingChange ratings={ratings} fn={r => r - 1} baseRating={squadRating} />
           </td>
         </tr>
       </table>
