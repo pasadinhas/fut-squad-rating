@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/fut-squad-rating/static/css/main.5e45fe6d.chunk.css",
+    "main.js": "/fut-squad-rating/static/js/main.69e7256f.chunk.js",
+    "main.js.map": "/fut-squad-rating/static/js/main.69e7256f.chunk.js.map",
+    "runtime-main.js": "/fut-squad-rating/static/js/runtime-main.9dd49e4f.js",
+    "runtime-main.js.map": "/fut-squad-rating/static/js/runtime-main.9dd49e4f.js.map",
+    "static/js/2.891a0949.chunk.js": "/fut-squad-rating/static/js/2.891a0949.chunk.js",
+    "static/js/2.891a0949.chunk.js.map": "/fut-squad-rating/static/js/2.891a0949.chunk.js.map",
+    "static/js/3.57ed8f17.chunk.js": "/fut-squad-rating/static/js/3.57ed8f17.chunk.js",
+    "static/js/3.57ed8f17.chunk.js.map": "/fut-squad-rating/static/js/3.57ed8f17.chunk.js.map",
+    "index.html": "/fut-squad-rating/index.html",
+    "static/css/main.5e45fe6d.chunk.css.map": "/fut-squad-rating/static/css/main.5e45fe6d.chunk.css.map",
+    "static/js/2.891a0949.chunk.js.LICENSE.txt": "/fut-squad-rating/static/js/2.891a0949.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9dd49e4f.js",
+    "static/js/2.891a0949.chunk.js",
+    "static/css/main.5e45fe6d.chunk.css",
+    "static/js/main.69e7256f.chunk.js"
+  ]
+}
