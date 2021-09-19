@@ -1,6 +1,7 @@
 import './App.css';
 import Rating from './Rating.jsx'
 import RatingChange from './RatingChange.jsx'
+import SquadRating from './SquadRating.jsx'
 import React, { useState } from 'react';
 import RMath from './RMath'
 import UI from './UI'
@@ -27,7 +28,8 @@ function App() {
         {ratings.map((r, i) => <Rating rating={r} setRating={setRating(i)} avg={squadAverage} />)}
       </header>
 
-      <h1>Rating: {UI.round(squadRating)}</h1>
+
+      <SquadRating rating={squadRating} />
       <p>Average: {UI.round(RMath.avg(ratings))}</p>
       <p>Correction: {UI.round(RMath.correction(ratings, RMath.avg(ratings)))}</p>
 
