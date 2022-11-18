@@ -42,7 +42,7 @@ function Rating(props) {
   return (
     <div className={`Rating ${classHighLow}`}>
       <div
-        className="RatingControls RatingIncrease"
+        className={"RatingControls RatingIncrease " + (props.increases ? "green" : "")}
         onClick={() => props.setRating(props.rating + 1)}
       ></div>
       <div
@@ -55,7 +55,7 @@ function Rating(props) {
         {props.rating}
       </div>
       <div
-        className="RatingControls RatingDecrease"
+        className={"RatingControls RatingDecrease " + (props.decreases ? "" : "green")}
         onClick={() => props.setRating(props.rating - 1)}
       ></div>
     </div>

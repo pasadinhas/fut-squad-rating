@@ -11,6 +11,12 @@ function ratingsArrayOf(rating) {
   return new Array(11).fill(rating)
 }
 
+function ratings_change(ratings, from, to) {
+  const values = [...ratings];
+  values[values.indexOf(from)] = to;
+  return values;
+}
+
 const BASE_RATINGS = ratingsArrayOf(80)
 
 
@@ -27,13 +33,20 @@ function App() {
   const squadAverage = RMath.avg(ratings)
   const squadRating = RMath.rating(ratings)
 
-  const notices = [];
-  if (UI.isInteger(squadRating)) {
-    notices.push(<><span className='emoji'>✅</span> The squad rating is a whole number!</>)
-  } else {
-    notices.push(<><span className='emoji'>⚠️</span> The squad rating has a decimal part. You can decrease some ratings.</>)
-  }
-  
+  const squadRatingInteger = UI.numberIntegerPart(squadRating)
+  const ratingChanges = [...new Set(ratings)].map(rating => {
+    const ratingWithIncrease = UI.numberIntegerPart(RMath.rating(ratings_change(ratings, rating, rating + 1)));
+    const ratingWithDecrease = UI.numberIntegerPart(RMath.rating(ratings_change(ratings, rating, rating - 1)));
+
+    return {
+      rating: rating,
+      decreases: ratingWithDecrease < squadRatingInteger,
+      increases: ratingWithIncrease > squadRatingInteger
+    }
+  }).reduce((result, current) => {
+    result[current.rating] = current;
+    return result;
+  }, {});
 
   return (
     <div className="App">
@@ -41,10 +54,15 @@ function App() {
 
       <div className='ratings-wrapper'>
         <div className='ratings'>
-          {ratings.map((r, i) => <Rating rating={r} setRating={setRating(i)} avg={squadAverage} />)}
+          {ratings.map((r, i) => <Rating 
+            decreases={ratingChanges[r].decreases} 
+            increases={ratingChanges[r].increases} 
+            rating={r} 
+            setRating={setRating(i)} 
+            avg={squadAverage} 
+          />)}
         </div>
       </div>
-
 
       <div className='controls'>
         <div>
@@ -56,10 +74,6 @@ function App() {
         <div>
           <RatingResetControls onReset={value => setRatings(ratingsArrayOf(value))}/>
         </div>
-      </div>
-          
-      <div className='notices'>
-        {notices.map(notice => <p>{notice}</p>)}
       </div>
     </div>
   );

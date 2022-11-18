@@ -18,7 +18,6 @@ function isInteger(n) {
 }
 
 function zeroFill(n, minLength) {
-  console.log({n, minLength})
   let nStr = n.toString()
   let nbZeroes = Math.max(0, minLength - nStr.length)
   return `${ '0'.repeat(nbZeroes) }${ nStr }`
