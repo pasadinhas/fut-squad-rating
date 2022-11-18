@@ -5,12 +5,12 @@ function SquadRating(props) {
     const ratingFractionalPart = UI.numberFractionalPart(props.rating)
 
     const isExact = parseInt(ratingFractionalPart) === 0;
-    
-    return <h1 style={{fontSize: '250%'}}>Rating: {ratingIntegerPart}{!isExact 
-        ? <span style={{fontSize: '50%'}}>.{ratingFractionalPart}</span> 
+
+    const decimalPart = !isExact 
+        ? <span className='decimal'>.{ratingFractionalPart}</span> 
         : ""
-    }
-    </h1>
+    
+    return <div className='squad-rating'><span>{ratingIntegerPart}{decimalPart}</span></div>
 }
 
 export default SquadRating;

@@ -13,6 +13,10 @@ function numberFractionalPart(n) {
   return zeroFill(parseInt(fractional * Math.pow(10, 2)), 2)
 }
 
+function isInteger(n) {
+  return parseInt(numberFractionalPart(n)) === 0;
+}
+
 function zeroFill(n, minLength) {
   console.log({n, minLength})
   let nStr = n.toString()
@@ -24,7 +28,8 @@ const UI = {
   round,
   numberIntegerPart,
   numberFractionalPart,
-  zeroFill
+  zeroFill,
+  isInteger
 }
 
 export default UI
