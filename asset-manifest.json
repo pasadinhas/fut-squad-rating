@@ -1,22 +1,13 @@
 {
   "files": {
-    "main.css": "/fut-squad-rating/static/css/main.fe270e19.chunk.css",
-    "main.js": "/fut-squad-rating/static/js/main.13ae279c.chunk.js",
-    "main.js.map": "/fut-squad-rating/static/js/main.13ae279c.chunk.js.map",
-    "runtime-main.js": "/fut-squad-rating/static/js/runtime-main.9dd49e4f.js",
-    "runtime-main.js.map": "/fut-squad-rating/static/js/runtime-main.9dd49e4f.js.map",
-    "static/js/2.51c16881.chunk.js": "/fut-squad-rating/static/js/2.51c16881.chunk.js",
-    "static/js/2.51c16881.chunk.js.map": "/fut-squad-rating/static/js/2.51c16881.chunk.js.map",
-    "static/js/3.57ed8f17.chunk.js": "/fut-squad-rating/static/js/3.57ed8f17.chunk.js",
-    "static/js/3.57ed8f17.chunk.js.map": "/fut-squad-rating/static/js/3.57ed8f17.chunk.js.map",
+    "main.css": "/fut-squad-rating/static/css/main.fbaf79a5.css",
+    "main.js": "/fut-squad-rating/static/js/main.11ac390e.js",
     "index.html": "/fut-squad-rating/index.html",
-    "static/css/main.fe270e19.chunk.css.map": "/fut-squad-rating/static/css/main.fe270e19.chunk.css.map",
-    "static/js/2.51c16881.chunk.js.LICENSE.txt": "/fut-squad-rating/static/js/2.51c16881.chunk.js.LICENSE.txt"
+    "main.fbaf79a5.css.map": "/fut-squad-rating/static/css/main.fbaf79a5.css.map",
+    "main.11ac390e.js.map": "/fut-squad-rating/static/js/main.11ac390e.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.9dd49e4f.js",
-    "static/js/2.51c16881.chunk.js",
-    "static/css/main.fe270e19.chunk.css",
-    "static/js/main.13ae279c.chunk.js"
+    "static/css/main.fbaf79a5.css",
+    "static/js/main.11ac390e.js"
   ]
 }
