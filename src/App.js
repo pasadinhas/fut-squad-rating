@@ -7,6 +7,8 @@ import RMath from './RMath'
 import UI from './UI'
 import RatingResetControls from './RatingResetControls';
 
+const SAVED_SQUADS = 'saved-squads';
+
 function ratingsArrayOf(rating) {
   return new Array(11).fill(rating)
 }
@@ -19,11 +21,23 @@ function ratings_change(ratings, from, to) {
 
 const BASE_RATINGS = ratingsArrayOf(80)
 
+function fetchSavedSquads() {
+  const savedSquadsStr = localStorage.getItem(SAVED_SQUADS);
+  return savedSquadsStr == null ? [] : JSON.parse(savedSquadsStr)
+}
+
+function storeSavedSquads(squads) {
+  localStorage.setItem(SAVED_SQUADS, JSON.stringify(squads))
+}
 
 function App() {
 
+  console.log()
+
   const [ratings, baseSetRatings] = useState(BASE_RATINGS)
   const setRatings = ratings => baseSetRatings([...ratings])
+
+  const [savedSquads, setSavedSquads] = useState(fetchSavedSquads())
 
   const setRating = i => r => {
     ratings[i] = r
@@ -65,15 +79,40 @@ function App() {
       </div>
 
       <div className='controls'>
-        <div>
-          <button className="btn" onClick={() => {
-            ratings.sort((a, b) => b - a)
-            setRatings(ratings)
-          }}>Sort Ratings</button>
+        <div className='controls-row'>
+          <div>
+            <button className="btn" onClick={() => {
+              ratings.sort((a, b) => b - a)
+              setRatings(ratings)
+            }}>Sort Ratings</button>
+          </div>
+          <div>
+            <RatingResetControls onReset={value => setRatings(ratingsArrayOf(value))}/>
+          </div>
+          <div className='save-as'>
+            <input type='text' placeholder='Save as...' style={{width: '1fr'}} id='squad-name'/>
+            <button className="btn" onClick={() => {
+                const name = document.getElementById('squad-name').value
+                document.getElementById('squad-name').value = ''
+                savedSquads[name] = [...ratings]
+                storeSavedSquads(savedSquads)
+                setSavedSquads({...savedSquads})
+              }}>Save</button>
+          </div>
         </div>
-        <div>
-          <RatingResetControls onReset={value => setRatings(ratingsArrayOf(value))}/>
-        </div>
+      </div>
+
+      <div className='saved-squads'>
+        {Object.entries(savedSquads).map(([squadName, squadRatings]) => <span>
+          <button className='saved-squad left-rounded' onClick={() => setRatings(squadRatings)}>{squadName}</button>
+          <button className='delete-saved-squad right-rounded' onClick={() => {
+            if (window.confirm(`Are you sure you want to delete the saved squad '${squadName}'?`)) {
+              delete savedSquads[squadName]
+              storeSavedSquads(savedSquads)
+              setSavedSquads({...savedSquads})
+            }
+          }}>🗑️</button>
+        </span>)}
       </div>
     </div>
   );
