@@ -3,11 +3,13 @@ import Rating from './Rating.jsx'
 import RatingChange from './RatingChange.jsx'
 import SquadRating from './SquadRating.jsx'
 import React, { useState } from 'react';
+import Futwiz from './Futwiz'
 import RMath from './RMath'
 import UI from './UI'
 import RatingResetControls from './RatingResetControls';
 
 const SAVED_SQUADS = 'saved-squads';
+const fmt = new Intl.NumberFormat();
 
 function ratingsArrayOf(rating) {
   return new Array(11).fill(rating)
@@ -32,7 +34,7 @@ function storeSavedSquads(squads) {
 
 function App() {
 
-  console.log()
+  console.log(Futwiz)
 
   const [ratings, baseSetRatings] = useState(BASE_RATINGS)
   const setRatings = ratings => baseSetRatings([...ratings])
@@ -46,6 +48,7 @@ function App() {
 
   const squadAverage = RMath.avg(ratings)
   const squadRating = RMath.rating(ratings)
+  const squadPrice = ratings.map(rating => (Futwiz.PricesByRating[rating] || [400])[0]).reduce((a, b) => a + b, 0)
 
   const squadRatingInteger = UI.numberIntegerPart(squadRating)
   const ratingChanges = [...new Set(ratings)].map(rating => {
@@ -65,6 +68,7 @@ function App() {
   return (
     <div className="App">
       <SquadRating rating={squadRating} />
+      <div className='squad-price'>Price: {fmt.format(squadPrice)}</div>
 
       <div className='ratings-wrapper'>
         <div className='ratings'>
