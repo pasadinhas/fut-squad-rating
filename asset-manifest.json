@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/fut-squad-rating/static/css/main.fbaf79a5.css",
-    "main.js": "/fut-squad-rating/static/js/main.11ac390e.js",
+    "main.css": "/fut-squad-rating/static/css/main.24e17085.css",
+    "main.js": "/fut-squad-rating/static/js/main.466d2e2a.js",
     "index.html": "/fut-squad-rating/index.html",
-    "main.fbaf79a5.css.map": "/fut-squad-rating/static/css/main.fbaf79a5.css.map",
-    "main.11ac390e.js.map": "/fut-squad-rating/static/js/main.11ac390e.js.map"
+    "main.24e17085.css.map": "/fut-squad-rating/static/css/main.24e17085.css.map",
+    "main.466d2e2a.js.map": "/fut-squad-rating/static/js/main.466d2e2a.js.map"
   },
   "entrypoints": [
-    "static/css/main.fbaf79a5.css",
-    "static/js/main.11ac390e.js"
+    "static/css/main.24e17085.css",
+    "static/js/main.466d2e2a.js"
   ]
 }
